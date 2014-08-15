@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-
+  resources :prices, only: [:index]
   get "latest_price" => "prices#update_prices", as: 'price', format: :json
+
+  root "prices#index"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

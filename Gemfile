@@ -6,6 +6,8 @@ gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
 # Using Bower to handle some front-end assets
 gem 'bower-rails'
+# Using this gem to future proof for production (pre-populates all angular assets in the cache)
+gem 'angular-rails-templates'
 # Postgresql DB
 gem 'pg'
 # Use SCSS for stylesheets
@@ -17,6 +19,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# Using Bootstrap gem
+gem 'bootstrap-sass'
 # Used for the json objects the bitcoin api returns
 gem 'httparty'
 

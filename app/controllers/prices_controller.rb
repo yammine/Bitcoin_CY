@@ -1,5 +1,7 @@
 class PricesController < ApplicationController
 
+  def index
+  end
 
 
   def update_prices
