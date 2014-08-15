@@ -1,19 +1,14 @@
 btcdash = angular.module('btcdash', [
   'templates',
-  'ngRoute',
-  'controllers'
+  'ngResource',
+  'ngRoute'
 ])
 
 btcdash.config([ '$routeProvider',
   ($routeProvider) ->
     $routeProvider
       .when('/',
-        templateUrl: "index.html",
+        templateUrl: "test.html",
         controller: 'PriceController'
         )
-])
-
-controllers = angular.module('controllers', [])
-controllers.controller("PriceController", ['$scope',
-  ($scope) ->
 ])
