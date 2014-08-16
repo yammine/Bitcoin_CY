@@ -21,6 +21,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Using Bootstrap gem
 gem 'bootstrap-sass'
+# Font-awesome for sweet icons man
+gem 'font-awesome-rails'
 # Used for the json objects the bitcoin api returns
 gem 'httparty'
 

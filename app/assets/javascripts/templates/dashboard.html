@@ -1,0 +1,26 @@
+<header class="row">
+  <h1 class="text-center col-md-6 col-md-offset-3">Bitcoin Dashboard</h1>
+</header>
+
+<div class="text-center" ng-controller="PriceController">
+  
+  <div class="row">
+    
+    <div class="col-md-3 col-md-offset-3">
+      <h3>(CAD) <i class="fa fa-usd fa-1x"></i>/<i class="fa fa-btc fa-1x"></i></h3>
+      <div class="price-box">{{price.CAD | currency}}</div>
+    </div>
+    
+    <div class="col-md-3">
+      <h3>(CNY) <i class="fa fa-cny fa-1x"></i>/<i class="fa fa-btc fa-1x"></i></h3>
+      <div class="price-box">{{price.CNY | currency : "&yen;" }}</div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <p>Last Updated at: {{price.time | date:'medium'}} <i class="changeme"></i></p>
+  </div>
+
+</div><!-- End PriceController  -->
+

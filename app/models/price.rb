@@ -1,5 +1,7 @@
 class Price < ActiveRecord::Base
 
-  scope :recent, -> { where([ "created_at > ?", 10.seconds.ago ])}
+  scope :recent, -> { where([ "time > ?", 14.seconds.ago ])}
+
+
 
 end

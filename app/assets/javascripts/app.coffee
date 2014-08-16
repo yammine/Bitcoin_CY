@@ -8,7 +8,11 @@ btcdash.config([ '$routeProvider',
   ($routeProvider) ->
     $routeProvider
       .when('/',
-        templateUrl: "test.html",
+        templateUrl: "dashboard.html",
         controller: 'PriceController'
+        )
+      .when('/about',
+        templateUrl: "about.html",
+        controller: 'AboutController'
         )
 ])

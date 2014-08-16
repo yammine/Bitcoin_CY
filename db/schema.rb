@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140814212624) do
 
   create_table "prices", force: true do |t|
     t.float    "CAD"
-    t.float    "USD"
+    t.float    "CNY"
     t.datetime "time"
     t.datetime "created_at"
     t.datetime "updated_at"
