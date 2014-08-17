@@ -6,24 +6,35 @@ class PricesController < ApplicationController
 
   def update_prices
     
-      if Price.recent.last
-        @price = Price.last
-      else 
-        begin 
-          Timeout::timeout(10) {
-            cad = HTTParty.get("https://api.bitcoinaverage.com/ticker/global/CAD/")
-            cny = HTTParty.get("https://api.bitcoinaverage.com/ticker/global/CNY/")
-            @price = Price.new(:CAD => cad["last"], :CNY => cny["last"], time: cad["timestamp"])
-            @price.save
-          }
-        rescue => e
-          if Price.last
-            @price = Price.last
-          else
-            @price = { :CAD => "Unavailable", :CNY => "Unavailable", time: Time.now }
-          end
+    if Price.last
+      previous_cad = Price.last.CAD
+      previous_cny = Price.last.CNY
+    end
+    
+    if Price.recent.last
+      @price = Price.last
+    else 
+      begin 
+        Timeout::timeout(DEFAULT_TIMEOUT) {
+          cad = HTTParty.get("https://api.bitcoinaverage.com/ticker/global/CAD/")
+          cny = HTTParty.get("https://api.bitcoinaverage.com/ticker/global/CNY/")
+          previous_cad ||= cad["last"]
+          previous_cny ||= cny["last"]
+          @price = Price.new(:CAD => cad["last"], :CNY => cny["last"],
+                             time: cad["timestamp"], prevCAD: previous_cad,
+                             prevCNY: previous_cny)
+          @price.save
+        }
+      rescue => e
+        if Price.last
+          @price = Price.last
+        else
+          @price = { :CAD => "Unavailable", :CNY => "Unavailable",
+                     time: Time.now, prevCAD: "Unavailable",
+                     prevCNY: "Unavailable" }
         end
       end
+    end
 
     render json: @price
 
