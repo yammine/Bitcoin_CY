@@ -12,14 +12,4 @@ btcdash.config([ '$routeProvider',
         templateUrl: "dashboard.html",
         controller: 'PriceController'
         )
-      .when('/about',
-        templateUrl: "about.html",
-        controller: 'AboutController'
-        )
 ])
-
-.animation('.change-animation', ->
-  enter: (element) ->
-    element.css('display', 'none')
-    element.fadeIn(1000)
-  )
