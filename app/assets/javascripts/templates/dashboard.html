@@ -1,25 +1,41 @@
 <header class="row">
-  <h1 class="text-center col-sm-6 col-sm-offset-3">Bitcoin Dashboard</h1>
+  <h1 class="text-center col-sm-6 col-sm-offset-3 dash-header">Bitcoin Dashboard</h1>
 </header>
 
-<div class="text-center" ng-controller="PriceController">
+<div ng-controller="PriceController">
   
   <div class="row">
     
-    <div class="col-sm-3 col-sm-offset-3">
-      <h3>(CAD) <i class="fa fa-usd fa-1x"></i>/<i class="fa fa-btc fa-1x"></i></h3>
-      <div class="price-box">{{price.CAD | currency}}</div>
+    <div class="col-sm-4 col-sm-offset-2">
+      <div class="straight-edge well text-center">
+        <h2 class="currency-header">(CAD) <i class="fa fa-usd fa-1x"></i>/<i class="fa fa-btc fa-1x"></i></h2>
+        <div class="price-box"><h1 id="cad">{{cad| currency}}</h1></div>
+        <div class="row">
+          <div class="col-sm-6">
+            <h3>{{cadChange}} <i id="cad-change" class="fa fa-1x"></i></h3>
+          </div>
+        </div>
+      </div>
     </div>
     
-    <div class="col-sm-3">
-      <h3>(CNY) <i class="fa fa-cny fa-1x"></i>/<i class="fa fa-btc fa-1x"></i></h3>
-      <div class="price-box">{{price.CNY | currency : "&yen;" }}</div>
+    <div class="col-sm-4">
+      <div class="straight-edge well text-center">
+        <h2 class="currency-header">(CNY) <i class="fa fa-cny fa-1x"></i>/<i class="fa fa-btc fa-1x"></i></h2>
+        <div class="price-box"><h1 id="cny">{{cny | currency : "&yen;" }}</h1></div>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-6">
+            <h3>{{cnyChange}} <i id="cny-change" class="fa fa-1x"></i></h3>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
 
   <div class="row">
-    <p>Last Updated at: {{price.time | date:'medium'}} <i class="changeme"></i></p>
+    <div class="col-sm-12 text-center">
+      <h4>Last Updated at: {{time | date:'medium'}} <i class="changeme"></i></h4>
+    </div>
   </div>
 
 </div><!-- End PriceController  -->

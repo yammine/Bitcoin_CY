@@ -1,7 +1,8 @@
 btcdash = angular.module('btcdash', [
   'templates',
   'ngResource',
-  'ngRoute'
+  'ngRoute',
+  'ngAnimate'
 ])
 
 btcdash.config([ '$routeProvider',
@@ -16,3 +17,9 @@ btcdash.config([ '$routeProvider',
         controller: 'AboutController'
         )
 ])
+
+.animation('.change-animation', ->
+  enter: (element) ->
+    element.css('display', 'none')
+    element.fadeIn(1000)
+  )

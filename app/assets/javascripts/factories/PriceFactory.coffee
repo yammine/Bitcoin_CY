@@ -1,6 +1,6 @@
-angular.module('btcdash')
+# angular.module('btcdash')
 
-.factory('PriceFactory', ['$resource', 
-  ($resource) ->
-    $resource('/latest_price', { format: 'json' })
-  ])
+# .factory('PriceFactory', ['$resource', 
+#   ($resource) ->
+#     $resource('/latest_price', { format: 'json' })
+#   ])
