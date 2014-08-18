@@ -11,8 +11,8 @@
         <h2 class="currency-header"><img src="assets/cad.png" alt="Canadian Flag"> CAD <i class="fa fa-usd fa-1x"></i>/<i class="fa fa-btc fa-1x"></i></h2>
         <div class="price-box">
           <h1 id="cad">{{cad| currency}}</h1>
-          <p class="littlegrey">Previous: {{ prevCad | currency }}</p>
         </div>
+        <p class="littlegrey">Previous: {{ prevCad | currency }}</p>
         <div class="row">
           <div class="col-sm-6">
             <h3>{{cadChange}} <i id="cad-change" class="fa fa-1x"></i></h3>
@@ -26,8 +26,8 @@
         <h2 class="currency-header"><img src="assets/cny.png" alt="Chinese Flag"> CNY <i class="fa fa-cny fa-1x"></i>/<i class="fa fa-btc fa-1x"></i></h2>
         <div class="price-box">
           <h1 id="cny">{{cny | currency : "&yen;" }}</h1>
-          <p class="littlegrey">Previous: {{ prevCny | currency : "&yen;" }}</p>
         </div>
+        <p class="littlegrey">Previous: {{ prevCny | currency : "&yen;" }}</p>
         <div class="row">
           <div class="col-sm-6 col-sm-offset-6">
             <h3>{{cnyChange}} <i id="cny-change" class="fa fa-1x"></i></h3>
