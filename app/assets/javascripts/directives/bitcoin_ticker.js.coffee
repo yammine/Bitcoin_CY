@@ -15,8 +15,10 @@ angular.module('btcdash')
         <div class="price-box">
           <h1 id="{{currencyId}}">
              <span ng-show="amount"
-                   ng-class="{'price-change': true, 'positive-change': valueWentUp(), 
-                              'negative-change': valueWentDown(), 'no-change': valueDidNotChange()}">
+                   ng-class="{'price-change':    true,
+                              'positive-change': valueWentUp(), 
+                              'negative-change': valueWentDown(), 
+                              'no-change':       valueDidNotChange()}">
               {{amount | currency}}
               </span>
            </h1>

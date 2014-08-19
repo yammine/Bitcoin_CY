@@ -1,9 +1,10 @@
 angular.module('btcdash')
 
 .animation('.price-change', ->
-  addClass: (element) ->
-    element.css('opacity',0)
-    jQuery(element).animate(
-      opacity: 1
-      )
+  addClass: (element, done) -> 
+    element.hide().fadeIn(300)
+    done
+  removeClass: (element, className) ->
+    if className
+      element.removeClass(className)
 )
