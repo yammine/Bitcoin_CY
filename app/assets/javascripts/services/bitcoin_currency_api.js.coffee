@@ -32,6 +32,9 @@ angular.module('btcdash')
         # Return an object with the currencies and time
         time: self.time
         amount: self.amount
+
+        # Call the animation
+        
       )
 
   new ApiClient

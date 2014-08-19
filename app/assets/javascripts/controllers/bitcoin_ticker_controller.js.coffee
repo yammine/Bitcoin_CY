@@ -25,5 +25,5 @@ angular.module('btcdash')
     else
       # If we don't have an amount
       $scope.previousAmount = $scope.amount = newAmount
-      $scope.amountChange = null
+      $scope.amountChange = 0.00
 ])

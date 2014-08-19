@@ -6,7 +6,7 @@ angular.module('btcdash')
 
     update = ->
       $scope.isLoading = true
-
+      
       BitcoinCurrencyApi.update().then (data) ->
         $scope.isLoading = false
         $scope.time = data.time
