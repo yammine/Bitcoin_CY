@@ -5,28 +5,25 @@ angular.module('btcdash')
   replace: true
   controller: 'BitcoinTickerController'
   template: """
-    <div class="col-sm-4">
+    <div class="col-sm-5">
       <div class="straight-edge well text-center">
         <h2 class="currency-header">
           <img ng-src="assets/{{currencyId}}.png" alt="{{ethnicity}} Flag">
-          {{currencyId | uppercase}} <i class="fa fa-usd fa-1x"></i>/<i class="fa fa-btc fa-1x"></i>
+          {{currencyId | uppercase}} {{currencySymbol}}/<i class="fa fa-btc fa-1x"></i>
         </h2>
 
         <div class="price-box">
           <h1 id="{{currencyId}}">
              <span ng-show="amount"
-                   ng-class="{'price-change':    true,
-                              'positive-change': valueWentUp(), 
-                              'negative-change': valueWentDown(), 
-                              'no-change':       valueDidNotChange()}">
-              {{amount | currency}}
+                   ng-class="{'positive-change': valueWentUp(), 'negative-change': valueWentDown(), 'no-change': valueDidNotChange()}">
+              {{amount | currency : currencySymbol }}
               </span>
            </h1>
         </div>
 
         <p class="littlegrey">
           <span ng-show="previousAmount">
-            Previous: {{ previousAmount | currency }}
+            Previous: {{ previousAmount | currency : currencySymbol }}
           </span>
         </p>
 
@@ -34,7 +31,7 @@ angular.module('btcdash')
           <div class="col-sm-6">
             <h3>
               <span ng-show="amountChange">
-                {{amountChange}} <i id="{{currencyId}}-change" class="fa fa-1x"></i>
+                {{amountChange}} <i ng-class="{ 'fa-caret-square-o-up positive-change': valueWentUp(), 'fa-caret-square-o-down negative-change': valueWentDown() }" id="{{currencyId}}-change" class="fa fa-1x"></i>
               </span>
             </h3>
           </div>
@@ -46,6 +43,7 @@ angular.module('btcdash')
   scope:
     currencyId: '@'
     ethnicity: '@'
+    currencySymbol: '@'
 
   link: (scope, el, attrs) ->
     BitcoinCurrencyApi.addCurrencyId(scope.currencyId)

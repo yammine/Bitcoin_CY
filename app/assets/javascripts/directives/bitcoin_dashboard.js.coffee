@@ -4,7 +4,7 @@ angular.module('btcdash')
   restrict: 'E'
   template: """
     <div class="bitcoin-dashboard-wrapper">
-      <div ng-transclude class="col-sm-offset-3"></div>
+      <div ng-transclude class="col-sm-offset-2"></div>
       <div class="row">
         <div class="col-sm-12 text-center">
           <h4>
