@@ -5,12 +5,7 @@ class PricesController < ApplicationController
 
 
   def update_prices
-    
-    if Price.last
-      previous_cad = Price.last.CAD # Assign previous_cad to the last recorded CAD price in DB
-      previous_cny = Price.last.CNY # Assign previous_cny to the last recorded CNY price in DB
-    end
-    
+   
     if Price.recent.last # If a price has been grabbed in the last 14 seconds then just pull from DB
       @price = Price.last
     else 
@@ -18,11 +13,10 @@ class PricesController < ApplicationController
         Timeout::timeout(10) { # Throw Timeout::Error after 10 seconds
           cad = HTTParty.get("https://api.bitcoinaverage.com/ticker/global/CAD/")
           cny = HTTParty.get("https://api.bitcoinaverage.com/ticker/global/CNY/")
-          previous_cad ||= cad["last"] # Assign previous_cad to current CAD price if no previous price exists
-          previous_cny ||= cny["last"] # Assign previous_cny to current CNY price if no previous price exists
+          gbp = HTTParty.get("https://api.bitcoinaverage.com/ticker/global/GBP/")
+
           @price = Price.new(:CAD => cad["last"], :CNY => cny["last"],
-                             time: cad["timestamp"], prevCAD: previous_cad,
-                             prevCNY: previous_cny)
+                             gbp: gbp["last"], time: cad["timestamp"])
           @price.save
         }
       rescue => e
@@ -30,8 +24,7 @@ class PricesController < ApplicationController
           @price = Price.last
         else # If no previous price exists - show unavailable
           @price = { :CAD => "Unavailable", :CNY => "Unavailable",
-                     time: Time.now, prevCAD: "Unavailable",
-                     prevCNY: "Unavailable" }
+                     time: Time.now }
         end
       end
     end

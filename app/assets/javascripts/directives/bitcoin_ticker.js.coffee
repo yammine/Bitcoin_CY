@@ -28,7 +28,7 @@ angular.module('btcdash')
         </p>
 
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-6 col-sm-offset-3 difference-box">
             <h3>
               <span ng-show="amountChange">
                 {{amountChange}} <i ng-class="{ 'fa-caret-square-o-up positive-change': valueWentUp(), 'fa-caret-square-o-down negative-change': valueWentDown() }" id="{{currencyId}}-change" class="fa fa-1x"></i>
