@@ -1,6 +1,6 @@
 angular.module('btcdash')
 
-.directive('bitcoinTicker', ['BitcoinCurrencyApi', (BitcoinCurrencyApi) ->
+.directive('bitcoinTicker', ['BitcoinCurrencyApi', '$animate', '$timeout', (BitcoinCurrencyApi, $animate, $timeout) ->
   restrict: 'E'
   replace: true
   controller: 'BitcoinTickerController'
@@ -14,10 +14,7 @@ angular.module('btcdash')
 
         <div class="price-box">
           <h1 id="{{currencyId}}">
-             <span ng-show="amount"
-                   ng-class="{'positive-change': valueWentUp(), 'negative-change': valueWentDown(), 'no-change': valueDidNotChange()}">
-              {{amount | currency : currencySymbol }}
-              </span>
+             <amount-watcher></amount-watcher>
            </h1>
         </div>
 
@@ -45,7 +42,26 @@ angular.module('btcdash')
     ethnicity: '@'
     currencySymbol: '@'
 
-  link: (scope, el, attrs) ->
+  link: (scope, element, attrs) ->
     BitcoinCurrencyApi.addCurrencyId(scope.currencyId)
 
+
 ])
+.directive('amountWatcher', ['$animate', '$timeout', ($animate,$timeout) ->
+  restrict: 'E'
+  template: """
+    <span ng-show="amount"
+         class="price-amount"
+         ng-class="{'positive-change': valueWentUp(), 'negative-change': valueWentDown(), 'no-change': valueDidNotChange()}">
+    {{amount | currency : currencySymbol }}
+    </span>
+  """
+  link: (scope, element) ->
+    scope.$watch('amount', (newVal) ->
+      $animate.addClass(element.children(), 'animated flash', ->
+        $timeout ->
+          $animate.removeClass(element.children(), 'animated flash')
+          5000))
+  ])
+
+

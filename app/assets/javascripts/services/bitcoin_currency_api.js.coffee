@@ -34,7 +34,6 @@ angular.module('btcdash')
         amount: self.amount
 
         # Call the animation
-        
       )
 
   new ApiClient
