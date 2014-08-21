@@ -8,7 +8,7 @@ angular.module('btcdash')
     <div class="col-sm-5">
       <div class="straight-edge well text-center">
         <h2 class="currency-header">
-          <img ng-src="assets/{{currencyId}}.png" alt="{{ethnicity}} Flag">
+          <img ng-src="img/{{currencyId}}.png" alt="{{ethnicity}} Flag">
           {{currencyId | uppercase}} {{currencySymbol}}/<i class="fa fa-btc fa-1x"></i>
         </h2>
 

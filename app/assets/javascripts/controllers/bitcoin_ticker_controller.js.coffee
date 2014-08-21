@@ -13,7 +13,7 @@ angular.module('btcdash')
   )
 
   $scope.valueWentUp = -> $scope.amountChange > 0
-  $scope.valueDidNotChange = -> $scope.amountChange == 0
+  $scope.valueDidNotChange = -> $scope.amountChange == 0.00
   $scope.valueWentDown = -> $scope.amountChange < 0
 
   $scope.updateAmount = (newAmount) ->
